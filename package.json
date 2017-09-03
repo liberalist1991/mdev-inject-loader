@@ -1,0 +1,14 @@
+{
+  "name": "mdev-inject-loader",
+  "version": "0.0.1",
+  "description": "为mdev无缝迁移webpack提供变量注入",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+      "loader-utils": "^1.1.0"
+  },
+  "author": "thinkzhan",
+  "license": "ISC"
+}
