@@ -32,16 +32,16 @@ function wrapJs (source, jsPath) {
 
     let selector = 'div[node-type~="module"].module-' + moduleName;
 
-    source = source.replace(/mdev\.dom\.build(\s\t)*\(/ig, ($) => {
-        return `mdev.dom.build('${selector}',`
+    source = source.replace(/mdev\.dom\.build(\s\t)*\((\s\t)*([^\)])/ig, ($, $1, $2, $3) => {
+        return `mdev.dom.build('${selector}',` + $3
     })
-    source = source.replace(/mdev\.dom\.getInstance(\s\t)*\(/ig, ($) => {
-        return `mdev.dom.getInstance('${selector}',`
+
+    source = source.replace(/mdev\.dom\.getInstance(\s\t)*\((\s\t)*([^\)])/ig, ($, $1, $2, $3) => {
+        return `mdev.dom.getInstance('${selector}',` + $3
     })
     source = source.replace(/mdev\.message\.listen(\s\t)*\(/ig, ($) => {
         return `mdev.message.listen('${moduleName}',`
     })
-
     // if (mdev && mdev.modules) {
     //     mdev.modules.push(moduleName);
     // }

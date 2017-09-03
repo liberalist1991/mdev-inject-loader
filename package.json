@@ -1,6 +1,6 @@
 {
   "name": "mdev-inject-loader",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "为mdev无缝迁移webpack提供变量注入",
   "main": "index.js",
   "scripts": {
