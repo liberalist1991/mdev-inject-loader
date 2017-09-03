@@ -34,6 +34,7 @@ function wrapJs (source, jsPath) {
 
     source = source.replace(/mdev\.dom\.build(\s\t)*\((\s\t)*([^\)])/ig, ($, $1, $2, $3) => {
         return `mdev.dom.build('${selector}',` + $3
+
     })
 
     source = source.replace(/mdev\.dom\.getInstance(\s\t)*\((\s\t)*([^\)])/ig, ($, $1, $2, $3) => {
@@ -42,6 +43,12 @@ function wrapJs (source, jsPath) {
     source = source.replace(/mdev\.message\.listen(\s\t)*\(/ig, ($) => {
         return `mdev.message.listen('${moduleName}',`
     })
+
+    // require('html.js') => require('html')
+    source = source.replace(/\.html\.js(\s\t)*(['"]+)/ig, ($, $1, $2) => {
+        return `.html${$2}`
+    })
+
     // if (mdev && mdev.modules) {
     //     mdev.modules.push(moduleName);
     // }
